@@ -1,3 +1,4 @@
+import DatosProcNR as nr
 
 class ResourceNR:
     def __init__(self, frequencyRange='FR1', bandWidth='10 MHz', carrieAggregation=1, SCS='15 MHz', modulation='QPSK', mimo='2x2'):
@@ -10,7 +11,7 @@ class ResourceNR:
     
     def calcTputNR (self):
         calcNR = 0
-        v = self.mimo
+        v = nr.MIMO(self.mimo)
         qam = self.modulation
         scalingFactor = 1
         uNumerology = 0
@@ -23,5 +24,3 @@ class ResourceNR:
             calcNR = calcNR + pow(10, -6) * (v * qam * scalingFactor * Rmax * ((n_BW_PBR * 12) / Ts_U) * (1 - oH))
         
         return calcNR.__round__(2)
-
-
