@@ -21,7 +21,7 @@ class Application:
 
         # Parâmetros de Entrada
 
-        self.inputFrame = LabelFrame(self.root, text='Input Parameters', width=390, height=190, font=('TkDefaultFont', 12, "bold"))
+        self.inputFrame = LabelFrame(self.root, text='Input Parameters', width=390, height=200, font=('TkDefaultFont', 10, "bold"))
         self.inputFrame.grid(row=0, column=0, padx=25, pady=25)
 
         # Caixas de escolha
@@ -60,6 +60,39 @@ class Application:
         self.modChosen= ttk.Combobox(self.inputFrame, textvariable=self.modChosen, width=10)
         self.modChosen['values'] = ['QPSK', '16QAM', '64QAM', '256QAM']
         self.modChosen.place(x=150, y=90)
+
+        self.testLabel = Label(self.inputFrame, text='MIMO', wraplength=245, anchor=W)
+        self.testLabel.place(x=290, y=70)
+        self.mimoChosen = StringVar()
+        self.mimoChoose= ttk.Combobox(self.inputFrame, textvariable=self.mimoChosen, width=10)
+        self.mimoChoose['values'] = ['2x2', '4x4', '8x8']
+        self.mimoChoose.place(x=270, y=90)
+
+        # Botão cálcular
+
+        self.botaoCalcular = Button(self.inputFrame, text="Calculate", borderwidth=3, cursor="hand2")
+        self.botaoCalcular['command'] = self.calculateRate
+        self.botaoCalcular.place(x=162, y=130)
+
+        # Parâmetros de Saída:
+
+        self.ouputFrame = LabelFrame(self.root, text='Output Parameters', width=390, height=80, font=('TkDefaultFont', 10, "bold"))
+        self.ouputFrame.grid(row=1, column=0, padx=25, pady=0)
+
+        # Mensagens com os resultados
+
+        self.mensagemTAXA = Label(self.ouputFrame, text='Transmission Rate', wraplength=295, anchor=W)
+        self.mensagemTAXA.place(x=30, y=15)
+        self.l1 = Label(self.ouputFrame, borderwidth=2, relief="groove", width=7)
+        self.l1.place(x=140, y=15)
+        self.mensagemMbps = Label(self.ouputFrame, text='Mbps', wraplength=200, anchor=W)
+        self.mensagemMbps.place(x=200, y=15)
+    
+    def calculateRate(self):
+
+        
+
+        pass
 
 root = Tk()
 Application(root)
