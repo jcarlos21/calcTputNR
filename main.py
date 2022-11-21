@@ -42,10 +42,10 @@ class Application:
 
         self.testLabel = Label(self.inputFrame, text='CA', wraplength=245, anchor=W)
         self.testLabel.place(x=300, y=10)
-        self.cpChosen = StringVar()
-        self.cpChoose= ttk.Combobox(self.inputFrame, textvariable=self.cpChosen, width=10)
-        self.cpChoose['values'] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        self.cpChoose.place(x=270, y=30)
+        self.caChosen = StringVar()
+        self.caChoose= ttk.Combobox(self.inputFrame, textvariable=self.caChosen, width=10)
+        self.caChoose['values'] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        self.caChoose.place(x=270, y=30)
 
         self.testLabel = Label(self.inputFrame, text='SCS', wraplength=245, anchor=W)
         self.testLabel.place(x=57, y=70)
@@ -90,9 +90,16 @@ class Application:
     
     def calculateRate(self):
 
-        
+        calculateNR = ResourceNR()
 
-        pass
+        calculateNR.fr = self.frChosen.get()
+        calculateNR.bw = self.bwChosen.get()
+        calculateNR.ca = self.caChosen.get()
+        calculateNR.scs = self.scsChosen.get()
+        calculateNR.modulation = self.modChosen.get()
+        calculateNR.mimo = self.mimoChosen.get()
+
+        self.l1['text'] = calculateNR.calcTputNR()
 
 root = Tk()
 Application(root)
