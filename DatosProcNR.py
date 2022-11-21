@@ -23,14 +23,8 @@ mimo_value = {'2x2': 2 , '4x4': 4, '8x8': 8}
 def MIMO(mimo):  # deve receber a configuração de antenas (ex.: 2x2)
     return mimo_value[mimo]
 
+# Modulation
 
 modulation_value = {'QPSK': 2, '16QAM': 4, '64QAM': 6, '256QAM': 8}
-
 def nModulation(modulation):
     return modulation_value[modulation]
-    
-
-# print(nBW_PBR('5 MHz', '60 MHz'))
-# print(nFR('FR2'))
-# print(MIMO('4x4'))
-print(nModulation('QPSK'))
