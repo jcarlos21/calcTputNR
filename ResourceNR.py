@@ -21,6 +21,9 @@ class ResourceNR:
         oH = nr.nFR(self.fr)
 
         for i in range(0, int(self.ca)):
-            calcNR = calcNR + pow(10, -6) * (v * qam * scalingFactor * Rmax * ((nPBR * 12) / Ts_U) * (1 - oH))
+            if nPBR == 'N/A':
+                return 'N/A'
+            else:
+                calcNR = calcNR + pow(10, -6) * (v * qam * scalingFactor * Rmax * ((nPBR * 12) / Ts_U) * (1 - oH))
         
         return calcNR.__round__(2)
