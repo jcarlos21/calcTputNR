@@ -91,7 +91,6 @@ class Application:
     def calculateRate(self):
 
         calculateNR = ResourceNR()
-
         calculateNR.fr = self.frChosen.get()
         calculateNR.bw = self.bwChosen.get()
         calculateNR.ca = self.caChosen.get()
