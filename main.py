@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import Tk
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 
 from ResourceNR import ResourceNR
 
@@ -19,10 +20,18 @@ class Application:
         self.label.place(x=0, y=0)
         self.label.image = self.backGroundImage
 
+        # Barra de Menu
+
+        menubar = Menu(root)
+        file1 = Menu(root, tearoff=False)
+        file1.add_command(label="Exit", command=self.exitLogin)
+        menubar.add_cascade(label="File", menu=file1)
+        self.root.config(menu=menubar)
+
         # Parâmetros de Entrada
 
         self.inputFrame = LabelFrame(self.root, text='Input Parameters', width=390, height=200, font=('TkDefaultFont', 10, "bold"))
-        self.inputFrame.grid(row=0, column=0, padx=25, pady=25)
+        self.inputFrame.grid(row=0, column=0, padx=25, pady=15)
 
         # Caixas de escolha
 
@@ -99,6 +108,11 @@ class Application:
         calculateNR.mimo = self.mimoChosen.get()
 
         self.l1['text'] = calculateNR.calcTputNR()
+    
+    def exitLogin(self):
+        result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")
+        if result == 'yes':
+            self.root.destroy() 
 
 root = Tk()
 Application(root)
