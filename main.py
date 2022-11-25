@@ -85,17 +85,24 @@ class Application:
 
         # Parâmetros de Saída:
 
-        self.ouputFrame = LabelFrame(self.root, text='Output Parameters', width=390, height=80, font=('TkDefaultFont', 10, "bold"))
+        self.ouputFrame = LabelFrame(self.root, text='Output Parameters', width=390, height=90, font=('TkDefaultFont', 10, "bold"))
         self.ouputFrame.grid(row=1, column=0, padx=25, pady=0)
 
         # Mensagens com os resultados
 
-        self.mensagemTAXA = Label(self.ouputFrame, text='Transmission Rate', wraplength=295, anchor=W)
-        self.mensagemTAXA.place(x=30, y=15)
+        self.mensagemTAXA = Label(self.ouputFrame, text='Maximum Transmission Rate', wraplength=295, anchor=W)
+        self.mensagemTAXA.place(x=10, y=7)
         self.l1 = Label(self.ouputFrame, borderwidth=2, relief="groove", width=7)
-        self.l1.place(x=140, y=15)
+        self.l1.place(x=175, y=7)
         self.mensagemMbps = Label(self.ouputFrame, text='Mbps', wraplength=200, anchor=W)
-        self.mensagemMbps.place(x=200, y=15)
+        self.mensagemMbps.place(x=235, y=7)
+
+        self.mensagemTAXA2 = Label(self.ouputFrame, text='Minimum Transmission Rate', wraplength=295, anchor=W)
+        self.mensagemTAXA2.place(x=10, y=35)
+        self.l2 = Label(self.ouputFrame, borderwidth=2, relief="groove", width=7)
+        self.l2.place(x=175, y=35)
+        self.mensagemMbps2 = Label(self.ouputFrame, text='Mbps', wraplength=200, anchor=W)
+        self.mensagemMbps2.place(x=235, y=35)
     
     def calculateRate(self):
 
@@ -107,7 +114,10 @@ class Application:
         calculateNR.modulation = self.modChosen.get()
         calculateNR.mimo = self.mimoChosen.get()
 
-        self.l1['text'] = calculateNR.calcTputNR()
+        maxRateNR, minRateNR = calculateNR.calcTputNR()
+
+        self.l1['text'] = maxRateNR
+        self.l2['text'] = minRateNR
     
     def exitLogin(self):
         result = messagebox.askquestion('System', 'Are you sure you want to exit?', icon="warning")

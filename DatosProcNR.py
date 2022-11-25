@@ -7,9 +7,16 @@ space60 = ['N/A', 11, 18, 24, 31, 38, 51, 65, 79, 107, 121, 135]
 
 nPBRs = {'15 MHz': space15, '30 MHz': space30, '60 MHz': space60}
 
+# Table 5.3.3-1: Minimum guardband for each UE channel bandwidth and SCS (kHz)
+m_space15 = [242.5, 312.5, 382.5, 452.5, 522.5, 592.5, 552.5, 692.5, 'N/A', 'N/A', 'N/A', 'N/A']
+m_space30 = [505, 665, 645, 805, 785, 945, 905, 1045, 825, 925, 885, 845]
+m_space60 = ['N/A', 1010, 990, 1330, 1310, 1290, 1610, 1570, 1530, 1450, 1410, 1370]
+
+n_m_PBRs = {'15 MHz': m_space15, '30 MHz': m_space30, '60 MHz': m_space60}
+
 def nBW_PBR(bw, SCS):
     idPBRBW = bandWidth.index(bw)
-    return nPBRs[SCS][idPBRBW]
+    return nPBRs[SCS][idPBRBW], n_m_PBRs[SCS][idPBRBW]
 
 # Frenquency Range
 
