@@ -28,7 +28,7 @@ class Application:
         menubar.add_cascade(label="File", menu=file1)
         self.root.config(menu=menubar)
 
-        # Parâmetros de Entrada
+        # Parâmetros de entrada
 
         self.inputFrame = LabelFrame(self.root, text='Input Parameters', width=390, height=200, font=('TkDefaultFont', 10, "bold"))
         self.inputFrame.grid(row=0, column=0, padx=25, pady=15)
